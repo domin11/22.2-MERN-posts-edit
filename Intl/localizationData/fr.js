@@ -9,6 +9,8 @@ export default {
     deletePost: 'Supprimer le message',
     createNewPost: 'Créer un nouveau message',
     editPost: 'Modifier le message',
+    thumbUpPost: 'Comme message',
+    thumbDownPost: 'Naime pas le message',
     authorName: 'Nom de l\'auteur',
     postTitle: 'Titre de l\'article',
     postContent: 'Contenu après',

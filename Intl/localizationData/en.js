@@ -9,6 +9,8 @@ export default {
     deletePost: 'Delete Post',
     createNewPost: 'Create new post',
     editPost: 'Edit Post',
+    thumbUpPost: 'Thumb Up post',
+    thumbDownPost: 'Thumb Down Post',
     authorName: 'Author\'s Name',
     postTitle: 'Post Title',
     postContent: 'Post Content',
