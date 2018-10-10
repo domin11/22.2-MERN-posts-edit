@@ -27,12 +27,12 @@ const PostReducer = (state = initialState, action) => {
 
     case THUMB_UP_POST :
       return {
-        data: state.data.map(post => { return post.cuid === action.cuid ? {...post, likes: post.likes +1 } :post } ),
+        data: state.data.map(post => { return post.cuid === action.cuid ? Object.assign({}, post, { likes: post.likes +1 }) : post; } ),
       };
 
     case THUMB_DOWN_POST :
       return {
-        data: state.data.map(post => { return post.cuid === action.cuid ? {...post, dislikes: post.dislikes +1 } :post } ),
+        data: state.data.map(post => { return post.cuid === action.cuid ? Object.assign({}, post, { dislikes: post.dislikes +1 }) : post; } ),
       };
 
     default:

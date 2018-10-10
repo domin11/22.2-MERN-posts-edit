@@ -90,28 +90,20 @@ export function deletePost(req, res) {
 
 //Thumb up post
 export function thumbUpPost(req, res) {
-  Post.findOneAndUpdate(
-    { cuid: req.params.cuid },
-    { $inc: { likes: 1 } },
-    err => {
-      if (err) {
-        res.status(500).send(err);
-      }
-      res.status(200).end();
+  Post.update({ cuid: req.params.cuid }).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
     }
-  );
+    res.json({ post });
+  });
 }
 
-//Thumb down post 
+//Thumb down post
 export function thumbDownPost(req, res) {
-  Post.findOneAndUpdate(
-    { cuid: req.params.cuid },
-    { $inc: { dislikes: 1 } },
-    err => {
-      if (err) {
-        res.status(500).send(err);
-      }
-      res.status(200).end();
+  Post.update({ cuid: req.params.cuid }).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
     }
-  );
+    res.json({ post });
+  });
 }

@@ -16,13 +16,15 @@ function PostListItem(props) {
       </h3>
       <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>
       <p className={styles['post-desc']}>{props.post.content}</p>
-      <p className={styles['post-action']}>
-        <span>likes: {props.post.likes}</span>
-        <span> dislikes: {props.post.dislikes}</span>
-        <a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a>
-        <a href="#" onClick={props.thumbUpPost}><FormattedMessage id="thumbUpPost" /></a>
-        <a href="#" onClick={props.thumbDownPost}><FormattedMessage id="thumbDownPost" /></a>
+      <p className={styles['post-desc']}>
+        <span className={styles['likes']}>Likes: {props.post.likes}</span>
+        <span className={styles['dislikes']}>Dislikes: {props.post.dislikes}</span>
       </p>
+      <div className={styles['post-action']}>
+        <a href="#" onClick={props.onThumbUp}><FormattedMessage id="thumbUpPost" /></a>
+        <a href="#" onClick={props.onThumbDown}><FormattedMessage id="thumbDownPost" /></a>
+        <a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a>
+      </div>
       <hr className={styles.divider} />
     </div>
   );
@@ -39,8 +41,8 @@ PostListItem.propTypes = {
     dislikes: PropTypes.number.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
-  thumbUpPost: PropTypes.func.isRequired,
-  thumbDownPost: PropTypes.func.isRequired,
+  onThumbUp: PropTypes.func.isRequired,
+  onThumbDown: PropTypes.func.isRequired,
 };
 
 export default PostListItem;

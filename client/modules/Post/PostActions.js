@@ -23,8 +23,8 @@ export function addPostRequest(post) {
         name: post.name,
         title: post.title,
         content: post.content,
-        likes: post.likes,
-        dislikes: post.dislikes
+        likes: 0,
+        dislikes: 0,
       },
     }).then(res => dispatch(addPost(res.post)));
   };
@@ -88,17 +88,12 @@ export function thumbUpPost(cuid) {
   return {
     type: THUMB_UP_POST,
     cuid,
-    likes
   }
 }
 
 export function thumbUpPostRequest(cuid, likes) {
   return (dispatch) => {
-    return callApi(`posts/${cuid}`, 'put', {
-      post: {
-        likes: post.likes +1
-      },
-    }).then(() => dispatch(thumbUpPost(cuid, likes)));
+    return callApi(`posts/${cuid}`, 'put').then(() => dispatch(thumbUpPost(cuid)));
   };
 }
 
@@ -106,16 +101,11 @@ export function thumbDownPost(cuid) {
   return {
     type: THUMB_DOWN_POST,
     cuid,
-    dislikes
   }
 }
 
 export function thumbDownPostRequest(cuid, dislikes) {
   return (dispatch) => {
-    return callApi(`posts/${cuid}`, 'put', {
-      post: {
-        dislikes: post.dislikes +1
-      },
-    }).then(() => dispatch(thumbDownPost(cuid, dislikes)));
+    return callApi(`posts/${cuid}`, 'put').then(() => dispatch(thumbDownPost(cuid)));
   };
 }
